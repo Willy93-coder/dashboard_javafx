@@ -94,22 +94,23 @@ public class DataBase {
                     " la amistad y la naturaleza humana.',15);");
 
             //Add information to table author:
-            smt.executeQuery("1,'Gabriel','García','Márquez','1927-1-1','2014-1-1'");
-            smt.executeQuery("2,'Herman','Melville',null,'1819-1-1','1891-1-1'");
-            smt.executeQuery("3,'Francis','Fitzgerald','Key','1896-1-1','1940-1-1'");
-            smt.executeQuery("4,'Jane','Austen',null,'1775-1-1','1817-1-1'");
-            smt.executeQuery("5,'Louisa','Alcott','May','1832-1-1','1888-1-1'");
-            smt.executeQuery("6,'John Ronald Reuel','Tolkien',null,'1892-1-1','1973-1-1'");
+            smt.executeQuery("insert into lib_author values(1,'Gabriel','García','Márquez','1927-1-1','2014-1-1')");
+            smt.executeQuery("insert into lib_author values(2,'Herman','Melville',null,'1819-1-1','1891-1-1')");
+            smt.executeQuery("insert into lib_author values(3,'Francis','Fitzgerald','Key','1896-1-1','1940-1-1')");
+            smt.executeQuery("insert into lib_author values(4,'Jane','Austen',null,'1775-1-1','1817-1-1')");
+            smt.executeQuery("insert into lib_author values(5,'Louisa','Alcott','May','1832-1-1','1888-1-1')");
+            smt.executeQuery("insert into lib_author values(6,'John Ronald Reuel','Tolkien',null,'1892-1-1','1973-1-1')");
 
             //Add information to table author_book
-            smt.executeQuery("1,1,1");
-            smt.executeQuery("2,2,2");
-            smt.executeQuery("3,3,3");
-            smt.executeQuery("4,4,4");
-            smt.executeQuery("5,5,5");
-            smt.executeQuery("6,6,6");
+            smt.executeQuery("insert into lib_author_book values(1,1,1)");
+            smt.executeQuery("insert into lib_author_book values(2,2,2)");
+            smt.executeQuery("insert into lib_author_book values(3,3,3)");
+            smt.executeQuery("insert into lib_author_book values(4,4,4)");
+            smt.executeQuery("insert into lib_author_book values(5,5,5)");
+            smt.executeQuery("insert into lib_author_book values(6,6,6)");
 
-
+            //this is a test to insert to table user
+            smt.executeQuery("insert into lib_user values(1,'test@gmail.com','test')");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
