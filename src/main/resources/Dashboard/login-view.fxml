@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Dashboard.controllers.LoginController">
    <children>
       <TextField fx:id="userInput" layoutX="214.0" layoutY="122.0">
          <font>
@@ -30,7 +30,7 @@
             <Font size="14.0" />
          </font>
       </TextField>
-      <Button fx:id="loginButton" layoutX="214.0" layoutY="276.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="173.0" text="Iniciar sesión" textAlignment="CENTER">
+      <Button fx:id="loginButton" layoutX="214.0" layoutY="276.0" mnemonicParsing="false" onAction="#loginMethod" prefHeight="25.0" prefWidth="173.0" text="Iniciar sesión" textAlignment="CENTER">
          <font>
             <Font size="14.0" />
          </font></Button>
