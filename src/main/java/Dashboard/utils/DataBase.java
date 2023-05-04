@@ -3,13 +3,13 @@ import java.sql.*;
 
 public class DataBase {
     public static void main(String[] args) throws SQLException {
-        Connection dbConnection = null;
+
+        Connection dbConnection=null;
 
         try {
             dbConnection= DriverManager.getConnection("jdbc:mysql://localhost:3306/","library", "Cide2023");
             System.out.println("Conexión ha sido establecida");
             Statement smt = dbConnection.createStatement();
-
 
             //  Eliminate Data Base just in case if we need to.
             //  smt.execute("Drop database library");
