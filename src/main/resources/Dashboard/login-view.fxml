@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Dashboard.controllers.LoginController">
+   <children>
+      <TextField fx:id="userInput" layoutX="214.0" layoutY="122.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </TextField>
+      <Label layoutX="214.0" layoutY="95.0" text="Email">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="214.0" layoutY="169.0" text="Contraseña">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="passwordInput" layoutX="214.0" layoutY="195.0" prefHeight="30.0" prefWidth="173.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <Button fx:id="loginButton" layoutX="214.0" layoutY="276.0" mnemonicParsing="false" onAction="#loginMethod" prefHeight="25.0" prefWidth="173.0" text="Iniciar sesión" textAlignment="CENTER">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Label fx:id="registerLink" layoutX="214.0" layoutY="231.0" text="¿No tienes cuenta? Registrate">
+         <font>
+            <Font size="11.0" />
+         </font></Label>
+   </children>
+</Pane>
