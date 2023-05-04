@@ -5,7 +5,7 @@ public class DataBase {
     public static void main(String[] args) throws SQLException {
         Connection dbConnection=null;
         try{
-            dbConnection= DriverManager.getConnection("jdbc:mysql://localhost:3306/","library", "Cide2023");
+            dbConnection= DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/","library", "Cide2023");
             System.out.println("Conexión ha sido establecida");
             Statement smt = dbConnection.createStatement();
             smt.executeUpdate("create database if not exists library");

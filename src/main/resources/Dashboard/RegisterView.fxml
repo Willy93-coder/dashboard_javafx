@@ -4,33 +4,48 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="468.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Dashboard.controllers.RegisterViewController">
+<AnchorPane prefHeight="468.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Dashboard.controllers.RegisterViewController">
    <children>
-      <Label layoutX="262.0" layoutY="35.0" text="Email">
+      <Label layoutX="205.0" layoutY="81.0" text="Email">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="229.0" layoutY="108.0" text="Nombre usuario">
+      <Label layoutX="205.0" layoutY="151.0" text="Nombre usuario">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="244.0" layoutY="177.0" text="Contraseña">
+      <Label layoutX="205.0" layoutY="214.0" text="Contraseña">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="213.0" layoutY="238.0" text="Confirmar contraseña">
+      <Label layoutX="208.0" layoutY="281.0" text="Confirmar contraseña">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="txtGotoLogin" layoutX="194.0" layoutY="340.0" onMouseClicked="#GotoLogin" text="¿Ya tienes cuenta? Iniciar Sesión" />
-      <TextField fx:id="txtEmail" layoutX="214.0" layoutY="68.0" />
-      <TextField fx:id="txtUsername" layoutX="205.0" layoutY="139.0" />
-      <TextField fx:id="txtPassword" layoutX="205.0" layoutY="205.0" />
-      <TextField fx:id="txtConfirm" layoutX="205.0" layoutY="265.0" />
-      <Button fx:id="btnRegister" layoutX="242.0" layoutY="306.0" mnemonicParsing="false" onAction="#Register" text="Registrarse" />
+      <Label layoutX="206.0" layoutY="352.0" onMouseClicked="#GotoLogin" text="¿Ya tienes cuenta?" />
+      <TextField fx:id="txtEmail" layoutX="205.0" layoutY="113.0">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+      <TextField fx:id="txtUsername" layoutX="206.0" layoutY="184.0">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+      <TextField fx:id="txtPassword" layoutX="206.0" layoutY="243.0">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+      <TextField fx:id="txtConfirm" layoutX="205.0" layoutY="312.0">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+      <Button fx:id="btnRegister" layoutX="262.0" layoutY="390.0" mnemonicParsing="false" onAction="#Register" text="Registrarse">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
    </children>
 </AnchorPane>
