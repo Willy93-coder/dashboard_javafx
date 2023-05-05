@@ -1,14 +1,12 @@
 package Dashboard.utils;
+import javafx.application.Application;
+
 import java.sql.*;
 
-public class DataBase {
-
+public class DataBase  {
     static Statement smt;
     static Connection dbConnection=null;
     public static void createDB () throws SQLException {
-
-
-
         try {
             dbConnection= DriverManager.getConnection("jdbc:mysql://localhost:3306/","library", "Cide2023");
             System.out.println("Conexión ha sido establecida");
@@ -118,6 +116,10 @@ public class DataBase {
     public static ResultSet getData(String query) throws SQLException{
         ResultSet data = smt.executeQuery(query);
         return data;
+    }
+
+    public static void insertData(String query) throws SQLException{
+        smt.executeUpdate(query);
     }
 
     public static void closeBD() throws SQLException {

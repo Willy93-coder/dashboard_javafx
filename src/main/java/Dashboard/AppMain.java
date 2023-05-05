@@ -11,6 +11,10 @@ import java.sql.SQLException;
 import static Dashboard.utils.DataBase.createDB;
 
 public class AppMain extends Application {
+    public static void main(String[] args) throws SQLException {
+        launch();
+        createDB();
+    }
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(AppMain.class.getResource("login-view.fxml"));
@@ -21,8 +25,5 @@ public class AppMain extends Application {
         stage.show();
     }
 
-    public static void main(String[] args) throws SQLException {
-        launch();
-        createDB();
-    }
+
 }
