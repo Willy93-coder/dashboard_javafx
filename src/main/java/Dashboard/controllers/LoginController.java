@@ -2,11 +2,16 @@ package Dashboard.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;
@@ -15,13 +20,13 @@ import static Dashboard.utils.DataBase.getData;
 
 public class LoginController implements Initializable {
     @FXML
+    private Pane root;
+
+    @FXML
     private TextField userInput;
 
     @FXML
     private TextField passwordInput;
-
-    @FXML
-    private Label registerLink;
 
     @FXML
     private Button loginButton;
