@@ -14,19 +14,17 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class BooksController implements Initializable {
+public class RentController implements Initializable {
     @FXML
-    private TableView tbl;
+    private TableView tblRent;
     @FXML
     private TableColumn tblTitle;
     @FXML
-    private TableColumn tblAuthor;
+    private TableColumn tblDateRent;
     @FXML
-    private TableColumn tblDate;
+    private TableColumn tblDateReturn;
     @FXML
-    private TableColumn tblQuantity;
-    @FXML
-    private TableColumn tblSinopsis;
+    private TableColumn tblUser;
     @FXML
     private Button btnReturn;
 

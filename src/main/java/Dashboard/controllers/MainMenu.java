@@ -88,7 +88,23 @@ public class MainMenu implements Initializable {
     }
     @FXML
     private void rentBooks(){
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Dashboard/Rent.fxml"));
+            Parent root = loader.load();
+            RentController controller = loader.getController();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.show();
+            stage.setOnCloseRequest(e -> {
+                controller.closeWindows();
+            });
+            Stage myStage = (Stage) this.btnAddBooks.getScene().getWindow();
+            myStage.close();
 
+        }catch (IOException e){
+            System.err.println(e.getMessage());
+        }
     }
 
     public void closeWindows() {
