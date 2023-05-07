@@ -4,11 +4,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import java.sql.*;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class RegisterViewController implements Initializable {
+public class InsertUserController implements Initializable {
 
     @FXML
     private TextField txtEmail;
@@ -19,7 +19,7 @@ public class RegisterViewController implements Initializable {
     @FXML
     private TextField txtConfirm;
     @FXML
-    private Button btnRegister;
+    private Button btnInsert;
 
 
     @Override
