@@ -28,7 +28,21 @@ public class MainMenu implements Initializable {
     }
     @FXML
     private void showBooks(){
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Dashboard/Books.fxml"));
+            Parent root = loader.load();
+            BooksController controller = loader.getController();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.show();
+            stage.setOnCloseRequest(e -> {controller.closeWindows();});
+            Stage myStage = (Stage) this.btnUser.getScene().getWindow();
+            myStage.close();
 
+        }catch (IOException e){
+            System.err.println(e.getMessage());
+        }
     }
     @FXML
     private void insertUser(){

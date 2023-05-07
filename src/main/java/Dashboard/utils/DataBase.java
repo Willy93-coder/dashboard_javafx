@@ -127,4 +127,7 @@ public class DataBase {
             throw new RuntimeException(e);
         }
     }
+    public static void showAllBooks() throws SQLException{
+
+    }
 }
