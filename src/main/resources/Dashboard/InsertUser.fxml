@@ -46,5 +46,6 @@
          <font>
             <Font size="14.0" />
          </font></Button>
+      <Button fx:id="btnReturn" layoutX="29.0" layoutY="418.0" mnemonicParsing="false" onAction="#closeWindows" text="Volver" />
    </children>
 </AnchorPane>
