@@ -3,18 +3,16 @@ import java.sql.*;
 
 public class DataBase {
 
-    static Statement smt;
-    static Connection dbConnection=null;
+    public static Statement smt;
+    public static Connection dbConnection;
     public static void createDB () throws SQLException {
-
-
-
         try {
             dbConnection= DriverManager.getConnection("jdbc:mysql://localhost:3306/","library", "Cide2023");
             System.out.println("Conexión ha sido establecida");
             smt = dbConnection.createStatement();
 
             //  Eliminate Data Base just in case if we need to.
+            smt.executeUpdate("drop database if exists library");
             //  smt.execute("Drop database library");
 
             //Create database named library
@@ -111,6 +109,8 @@ public class DataBase {
 
             //this is a test to insert to table user
             smt.executeUpdate("insert into lib_user values(1,'test@gmail.com','test')");
+
+            dbConnection.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -118,6 +118,15 @@ public class DataBase {
     public static ResultSet getData(String query) throws SQLException{
         ResultSet data = smt.executeQuery(query);
         return data;
+    }
+
+    public static void initDB() throws SQLException {
+        try {
+            dbConnection= DriverManager.getConnection("jdbc:mysql://localhost:3306/library","library", "Cide2023");
+            smt = dbConnection.createStatement();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public static void closeBD() throws SQLException {
