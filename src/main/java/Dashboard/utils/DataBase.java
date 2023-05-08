@@ -1,16 +1,17 @@
 package Dashboard.utils;
-import java.sql.*;
 
+import java.sql.*;
 public class DataBase {
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws SQLException, ClassNotFoundException {
         Connection dbConnection = null;
 
-        try {
-            dbConnection= DriverManager.getConnection("jdbc:mysql://localhost:3306/","library", "Cide2023");
-            System.out.println("Conexión ha sido establecida");
-            Statement smt = dbConnection.createStatement();
+        // try {
+        //Class.forName("com.mysql.jdbc.Driver");
+        dbConnection = DriverManager.getConnection("jdbc:mysql://localhost/library", "root", "ZhanXue5201314");
+        System.out.println("Conexión ha sido establecida");
+        Statement smt = dbConnection.createStatement();
 
-
+            /*
             //  Eliminate Data Base just in case if we need to.
             //  smt.execute("Drop database library");
 
@@ -117,4 +118,8 @@ public class DataBase {
 
 
     }
+      */
+
+    }
 }
+
