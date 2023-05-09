@@ -9,11 +9,11 @@ import java.sql.*;
 
 public class DataBase {
     // Atributos
-    static String title;
-    static String author;
-    static Date publish_day;
-    static int book_quantity;
-    static String sinopsis;
+    private String title;
+    private String author;
+    private Date publish_day;
+    private int book_quantity;
+    private String sinopsis;
 
     public static Statement smt;
     public static Connection dbConnection;
@@ -23,31 +23,31 @@ public class DataBase {
     }
 
     public DataBase(String title, String author, Date publish_day, int book_quantity, String sinopsis) {
-        DataBase.title = title;
-        DataBase.author = author;
-        DataBase.publish_day = publish_day;
-        DataBase.book_quantity = book_quantity;
-        DataBase.sinopsis = sinopsis;
+        this.title = title;
+        this.author = author;
+        this.publish_day = publish_day;
+        this.book_quantity = book_quantity;
+        this.sinopsis = sinopsis;
     }
 
     // Getters
-    public static String getTitle() {
+    public String getTitle() {
         return title;
     }
 
-    public static String getAuthor() {
+    public String getAuthor() {
         return author;
     }
 
-    public static  Date getPublish_day() {
+    public Date getPublish_day() {
         return publish_day;
     }
 
-    public static  int getBook_quantity() {
+    public int getBook_quantity() {
         return book_quantity;
     }
 
-    public static  String getSinopsis() {
+    public String getSinopsis() {
         return sinopsis;
     }
 
@@ -185,14 +185,16 @@ public class DataBase {
     public static void showAllBooks(TableColumn<DataBase, String> title, TableColumn<DataBase, String> author, TableColumn<DataBase, Date> publish_day, TableColumn<DataBase, Integer> book_quantity, TableColumn<DataBase, String> sinopsis, TableView<DataBase> table) throws SQLException{
         try {
             initDB();
-            String query = "SELECT title, author, publish_day, book_quantity, sinopsis FROM lib_book";
-            ResultSet rs = getData(query);
+            String query = "SELECT title, author, publish_day, book_quantity, sinopsis FROM lib_book;";
+            ResultSet rs = smt.executeQuery("SELECT title, author, publish_day, book_quantity, sinopsis FROM lib_book;");
             ObservableList<DataBase> bookList = FXCollections.observableArrayList();
             while (rs.next()) {
                 DataBase book = new DataBase(rs.getString("title"), rs.getString("author"), rs.getDate("publish_day"), rs.getInt("book_quantity"), rs.getString("sinopsis"));
+                System.out.println(book);
                 bookList.add(book);
             }
             table.setItems(bookList);
+            table.refresh();
             title.setCellValueFactory(new PropertyValueFactory<>("title"));
             author.setCellValueFactory(new PropertyValueFactory<>("author"));
             publish_day.setCellValueFactory(new PropertyValueFactory<>("publish_day"));
