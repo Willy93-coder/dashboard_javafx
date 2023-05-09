@@ -5,6 +5,7 @@ module com.example.dashboard_javafx {
 
 
     opens Dashboard to javafx.fxml;
+    opens Dashboard.utils to javafx.base;
     exports Dashboard;
     exports Dashboard.controllers;
     opens Dashboard.controllers to javafx.fxml;
