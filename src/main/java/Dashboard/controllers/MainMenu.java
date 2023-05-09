@@ -21,7 +21,7 @@ public class MainMenu implements Initializable {
     @FXML
     private Button btnAddBooks;
     @FXML
-    private Button btnRentBooks;
+    private Button btnRent;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
@@ -37,7 +37,7 @@ public class MainMenu implements Initializable {
             stage.setScene(scene);
             stage.show();
             stage.setOnCloseRequest(e -> {controller.closeWindows();});
-            Stage myStage = (Stage) this.btnUser.getScene().getWindow();
+            Stage myStage = (Stage) this.btnBooks.getScene().getWindow();
             myStage.close();
 
         }catch (IOException e){
@@ -99,7 +99,7 @@ public class MainMenu implements Initializable {
             stage.setOnCloseRequest(e -> {
                 controller.closeWindows();
             });
-            Stage myStage = (Stage) this.btnAddBooks.getScene().getWindow();
+            Stage myStage = (Stage) this.btnRent.getScene().getWindow();
             myStage.close();
 
         }catch (IOException e){
