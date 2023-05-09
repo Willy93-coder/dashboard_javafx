@@ -186,7 +186,7 @@ public class DataBase {
         try {
             initDB();
             String query = "SELECT title, author, publish_day, book_quantity, sinopsis FROM lib_book;";
-            ResultSet rs = smt.executeQuery("SELECT title, author, publish_day, book_quantity, sinopsis FROM lib_book;");
+            ResultSet rs = smt.executeQuery(query);
             ObservableList<DataBase> bookList = FXCollections.observableArrayList();
             while (rs.next()) {
                 DataBase book = new DataBase(rs.getString("title"), rs.getString("author"), rs.getDate("publish_day"), rs.getInt("book_quantity"), rs.getString("sinopsis"));
