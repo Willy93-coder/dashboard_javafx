@@ -50,7 +50,7 @@ public class LoginController implements Initializable {
                 goToMainMenu();
             } else {
                 Alert alert= new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("Cagaste pibe");
+                alert.setContentText("La contraseña o el usuario no son correctos");
                 alert.showAndWait();
                 closeBD();
             }
