@@ -190,7 +190,6 @@ public class DataBase {
             ObservableList<DataBase> bookList = FXCollections.observableArrayList();
             while (rs.next()) {
                 DataBase book = new DataBase(rs.getString("title"), rs.getString("author"), rs.getDate("publish_day"), rs.getInt("book_quantity"), rs.getString("sinopsis"));
-                System.out.println(book);
                 bookList.add(book);
             }
             table.setItems(bookList);

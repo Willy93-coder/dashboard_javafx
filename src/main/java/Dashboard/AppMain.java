@@ -14,7 +14,7 @@ import static Dashboard.utils.DataBase.createDB;
 public class AppMain extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(AppMain.class.getResource("main_menu.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(AppMain.class.getResource("login-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.sizeToScene();
         stage.setTitle("Library");
