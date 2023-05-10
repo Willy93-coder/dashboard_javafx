@@ -1,11 +1,15 @@
 package Dashboard.utils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.sql.*;
+import java.time.LocalDate;
+
+import static java.lang.Integer.parseInt;
 
 public class DataBase {
     // Atributos
@@ -14,6 +18,10 @@ public class DataBase {
     private Date publish_day;
     private int book_quantity;
     private String sinopsis;
+
+    private DatePicker rent_day;
+
+    private DatePicker return_day;
 
     public static Statement smt;
     public static Connection dbConnection;
@@ -205,5 +213,7 @@ public class DataBase {
         }
     }
 
-    public static void insertBook(){};
+    public static void insertBook(String title, String author, String sinopsis, String date, String quantity){
+        int quantityBBDD = parseInt(quantity);
+    };
 }
