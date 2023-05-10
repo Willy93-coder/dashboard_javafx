@@ -11,7 +11,7 @@
           <TableColumn fx:id="tblTitle" prefWidth="141.0" text="Titulo" />
           <TableColumn fx:id="tblDateRent" prefWidth="122.0" text="Fecha prestamo" />
             <TableColumn fx:id="tblDateReturn" prefWidth="133.0" text="Fecha devolucion" />
-            <TableColumn prefWidth="203.0" text="Usuario" />
+            <TableColumn fx:id="tblUser" prefWidth="203.0" text="Usuario" />
         </columns>
       </TableView>
       <Button fx:id="btnReturn" layoutX="7.0" layoutY="365.0" mnemonicParsing="false" onAction="#closeWindows" text="Volver" />
