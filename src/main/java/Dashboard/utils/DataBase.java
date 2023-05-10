@@ -205,5 +205,10 @@ public class DataBase {
         }
     }
 
-    public static void insertUser(){};
+    public static void insertUser(String email, String password) throws SQLException {
+        initDB();
+        String query = ("insert into lib_user values('"+ email +"','"+ password +"');");
+        smt.executeUpdate(query);
+        closeBD();
+    };
 }

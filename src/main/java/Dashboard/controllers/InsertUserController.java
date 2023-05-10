@@ -11,7 +11,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
+
+import static Dashboard.utils.DataBase.insertUser;
 
 public class InsertUserController implements Initializable {
 
@@ -35,9 +38,11 @@ public class InsertUserController implements Initializable {
     }
 
     @FXML
+    private void register() throws SQLException {
+        String email = txtEmail.getText();
+        String password = txtPassword.getText();
 
-    private void Register(){
-
+        insertUser(email, password);
     }
 
     public void closeWindows() {
