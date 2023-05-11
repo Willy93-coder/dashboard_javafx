@@ -1,10 +1,12 @@
 package Dashboard.utils;
+
+import javafx.application.Application;
+import java.sql.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-
 import java.sql.*;
 
 public class DataBase {
