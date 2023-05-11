@@ -1,11 +1,19 @@
 package Dashboard.utils;
+
+import javafx.application.Application;
+import java.sql.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-
 import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+
+import static java.lang.Integer.parseInt;
 
 public class DataBase {
     // Atributos
@@ -14,13 +22,9 @@ public class DataBase {
     private Date publish_day;
     private int book_quantity;
     private String sinopsis;
-
     private String user_email;
-
     private Date rent_day;
-
     private Date return_day;
-
 
     public static Statement smt;
     public static Connection dbConnection;
@@ -215,11 +219,12 @@ public class DataBase {
             throw new RuntimeException(e);
         }
     }
+  
     public static void showAllBooks(TableColumn<DataBase, String> title, TableColumn<DataBase, String> author, TableColumn<DataBase, Date> publish_day, TableColumn<DataBase, Integer> book_quantity, TableColumn<DataBase, String> sinopsis, TableView<DataBase> table) throws SQLException{
         try {
             initDB();
             String query = "SELECT title, author, publish_day, book_quantity, sinopsis FROM lib_book;";
-            ResultSet rs = smt.executeQuery("SELECT title, author, publish_day, book_quantity, sinopsis FROM lib_book;");
+            ResultSet rs = smt.executeQuery(query);
             ObservableList<DataBase> bookList = FXCollections.observableArrayList();
             while (rs.next()) {
                 DataBase book = new DataBase(rs.getString("title"), rs.getString("author"), rs.getDate("publish_day"), rs.getInt("book_quantity"), rs.getString("sinopsis"));
@@ -254,5 +259,28 @@ public class DataBase {
            returnDate.setCellValueFactory(new PropertyValueFactory<>("return_day"));
            email.setCellValueFactory(new PropertyValueFactory<>("user_email"));
            closeBD();
-   }
+    }
+
+    public static void insertUser(String email, String password) throws SQLException {
+        initDB();
+        String query = ("insert into lib_user (user_email, user_password) values('"+ email +"','"+ password +"');");
+        smt.executeUpdate(query);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Successful");
+        alert.setHeaderText("Registro completado correctamente");
+        alert.showAndWait();
+    }
+  
+    public static void insertBook(String title, String author, String sinopsis, String date, String quantity) throws ParseException, SQLException {
+        initDB();
+        int quantityDB = parseInt(quantity);
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        java.util.Date formatDate = format.parse(date);
+        long numberDate = formatDate.getTime();
+        Date dateDB = new Date(numberDate);
+        String query = ("insert into lib_book(title, author,publish_day,favourite,sinopsis,book_quantity) values('"+ title +"','"+ author +"','"+dateDB+"',false, '" + sinopsis +"',"+ quantityDB+");");
+        smt.executeUpdate(query);
+        closeBD();
+    };
+
 }

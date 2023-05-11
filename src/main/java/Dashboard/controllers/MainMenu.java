@@ -35,6 +35,7 @@ public class MainMenu implements Initializable {
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(scene);
+            stage.setTitle("Books");
             stage.show();
             stage.setOnCloseRequest(e -> {controller.closeWindows();});
             Stage myStage = (Stage) this.btnBooks.getScene().getWindow();
@@ -53,6 +54,7 @@ public class MainMenu implements Initializable {
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);
+        stage.setTitle("Insert user");
         stage.show();
         stage.setOnCloseRequest(e -> {controller.closeWindows();});
         Stage myStage = (Stage) this.btnUser.getScene().getWindow();
@@ -71,6 +73,7 @@ public class MainMenu implements Initializable {
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);
+        stage.setTitle("Insert book");
         stage.show();
         stage.setOnCloseRequest(e -> {
             try {
@@ -95,6 +98,7 @@ public class MainMenu implements Initializable {
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(scene);
+            stage.setTitle("Rent table");
             stage.show();
             stage.setOnCloseRequest(e -> {
                 controller.closeWindows();

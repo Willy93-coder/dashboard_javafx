@@ -16,7 +16,7 @@
       <TextField fx:id="txtDate" layoutX="209.0" layoutY="238.0" />
       <Label layoutX="260.0" layoutY="267.0" text="Cantidad" />
       <TextField fx:id="txtQuantity" layoutX="212.0" layoutY="289.0" />
-      <Button fx:id="btnInsert" layoutX="245.0" layoutY="339.0" mnemonicParsing="false" onAction="#InsertBook" text="Insertar libro" />
+      <Button fx:id="btnInsert" layoutX="245.0" layoutY="339.0" mnemonicParsing="false" onAction="#insertFormBook" text="Insertar libro" />
       <Button fx:id="btnReturn" layoutX="25.0" layoutY="346.0" mnemonicParsing="false" onAction="#closeWindows" text="Volver" />
    </children>
 </Pane>
