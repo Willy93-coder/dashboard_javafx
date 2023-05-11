@@ -4,10 +4,16 @@ import javafx.application.Application;
 import java.sql.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+
+import static java.lang.Integer.parseInt;
 
 public class DataBase {
     // Atributos
@@ -16,6 +22,10 @@ public class DataBase {
     private Date publish_day;
     private int book_quantity;
     private String sinopsis;
+
+    private DatePicker rent_day;
+
+    private DatePicker return_day;
 
     public static Statement smt;
     public static Connection dbConnection;
@@ -188,7 +198,7 @@ public class DataBase {
         try {
             initDB();
             String query = "SELECT title, author, publish_day, book_quantity, sinopsis FROM lib_book;";
-            ResultSet rs = smt.executeQuery("SELECT title, author, publish_day, book_quantity, sinopsis FROM lib_book;");
+            ResultSet rs = smt.executeQuery(query);
             ObservableList<DataBase> bookList = FXCollections.observableArrayList();
             while (rs.next()) {
                 DataBase book = new DataBase(rs.getString("title"), rs.getString("author"), rs.getDate("publish_day"), rs.getInt("book_quantity"), rs.getString("sinopsis"));
@@ -206,4 +216,16 @@ public class DataBase {
             throw new RuntimeException(e);
         }
     }
+
+    public static void insertBook(String title, String author, String sinopsis, String date, String quantity) throws ParseException, SQLException {
+        initDB();
+        int quantityDB = parseInt(quantity);
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        java.util.Date formatDate = format.parse(date);
+        long numberDate = formatDate.getTime();
+        Date dateDB = new Date(numberDate);
+        String query = ("insert into lib_book(title, author,publish_day,favourite,sinopsis,book_quantity) values('"+ title +"','"+ author +"','"+dateDB+"',false, '" + sinopsis +"',"+ quantityDB+");");
+        smt.executeUpdate(query);
+        closeBD();
+    };
 }

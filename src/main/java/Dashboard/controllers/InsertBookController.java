@@ -11,9 +11,13 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import static Dashboard.utils.DataBase.insertBook;
 
 public class InsertBookController implements Initializable {
     @FXML
@@ -37,7 +41,14 @@ public class InsertBookController implements Initializable {
     }
 
     @FXML
-    private void InsertBook(){
+    private void insertFormBook() throws SQLException, ParseException {
+        String title  = txtTitle.getText();
+        String author  = txtAuthor.getText();
+        String sinopsis  = txtSinopsis.getText();
+        String date  = txtDate.getText();
+        String quantity  = txtQuantity.getText();
+
+        insertBook(title, author, sinopsis, date, quantity);
 
     }
     public void closeWindows() throws IOException {
