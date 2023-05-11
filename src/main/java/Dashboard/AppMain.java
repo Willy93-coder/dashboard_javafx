@@ -17,7 +17,7 @@ public class AppMain extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(AppMain.class.getResource("main_menu.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.sizeToScene();
-        stage.setTitle("Library");
+        stage.setTitle("Login page");
         stage.setScene(scene);
         stage.show();
     }

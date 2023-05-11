@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -23,7 +24,7 @@ public class InsertUserController implements Initializable {
     @FXML
     private TextField txtPassword;
     @FXML
-    private Button btnInsert;
+    private Button btnRegister;
     @FXML
     private Button btnReturn;
 
@@ -37,8 +38,21 @@ public class InsertUserController implements Initializable {
     private void register() throws SQLException {
         String email = txtEmail.getText();
         String password = txtPassword.getText();
-
-        insertUser(email, password);
+        if (email.isEmpty() || password.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Los campos no pueden estar vacios");
+            alert.showAndWait();
+        } else if (!email.matches("[a-zA-Z]+@[a-z]+\\.[a-z]{2,}")) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Email no valido");
+            alert.showAndWait();
+        } else {
+            insertUser(email, password);
+            txtEmail.setText("");
+            txtPassword.setText("");
+        }
     }
 
     public void closeWindows() {

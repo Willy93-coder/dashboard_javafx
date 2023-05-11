@@ -1,6 +1,7 @@
 package Dashboard.utils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -209,6 +210,10 @@ public class DataBase {
         initDB();
         String query = ("insert into lib_user (user_email, user_password) values('"+ email +"','"+ password +"');");
         smt.executeUpdate(query);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Successful");
+        alert.setHeaderText("Registro completado correctamente");
+        alert.showAndWait();
         closeBD();
     };
 }
