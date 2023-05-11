@@ -22,10 +22,9 @@ public class DataBase {
     private Date publish_day;
     private int book_quantity;
     private String sinopsis;
-
-    private DatePicker rent_day;
-
-    private DatePicker return_day;
+    private String user_email;
+    private Date rent_day;
+    private Date return_day;
 
     public static Statement smt;
     public static Connection dbConnection;
@@ -34,12 +33,21 @@ public class DataBase {
     public DataBase() {
     }
 
+    // Books table constructor
     public DataBase(String title, String author, Date publish_day, int book_quantity, String sinopsis) {
         this.title = title;
         this.author = author;
         this.publish_day = publish_day;
         this.book_quantity = book_quantity;
         this.sinopsis = sinopsis;
+    }
+
+    // Rent table constructor
+    public DataBase(String title, Date rent_day, Date return_day, String email) {
+        this.title = title;
+        this.rent_day = rent_day;
+        this.return_day = return_day;
+        this.user_email = email;
     }
 
     // Getters
@@ -61,6 +69,18 @@ public class DataBase {
 
     public String getSinopsis() {
         return sinopsis;
+    }
+
+    public String getUser_email() {
+        return user_email;
+    }
+
+    public Date getRent_day() {
+        return rent_day;
+    }
+
+    public Date getReturn_day() {
+        return return_day;
     }
 
     public static void createDB () throws SQLException {
@@ -167,6 +187,11 @@ public class DataBase {
 
             //this is a test to insert to table user
             smt.executeUpdate("insert into lib_user values(1,'test@gmail.com','test')");
+            smt.executeUpdate("insert into lib_user values(2,'willy@gmail.com','willy')");
+
+            //Add information to table lib_rent
+            smt.executeUpdate("insert into lib_rent(user_id, book_id, rent_day,return_day,rent_quantity) values(1,1,'2023-06-12','2023-07-20',1)");
+
 
             dbConnection.close();
         } catch (SQLException e) {
@@ -218,6 +243,24 @@ public class DataBase {
         }
     }
 
+   public static void rentBooksTable(TableColumn<DataBase, String> title, TableColumn<DataBase, Date> rentDate, TableColumn<DataBase, Date> returnDate, TableColumn<DataBase, String> email, TableView<DataBase> table) throws SQLException {
+           initDB();
+           String query = "select b.title, r.rent_day, r.return_day, u.user_email from lib_rent r inner join lib_user u on r.user_id = u.user_id inner join lib_book b on b.book_id = r.book_id;";
+           ResultSet rs = smt.executeQuery(query);
+           ObservableList<DataBase> rentList = FXCollections.observableArrayList();
+           while (rs.next()) {
+               DataBase rentBook = new DataBase(rs.getString("title"), rs.getDate("rent_day"), rs.getDate("return_day"), rs.getString("user_email"));
+               rentList.add(rentBook);
+           }
+           table.setItems(rentList);
+           table.refresh();
+           title.setCellValueFactory(new PropertyValueFactory<>("title"));
+           rentDate.setCellValueFactory(new PropertyValueFactory<>("rent_day"));
+           returnDate.setCellValueFactory(new PropertyValueFactory<>("return_day"));
+           email.setCellValueFactory(new PropertyValueFactory<>("user_email"));
+           closeBD();
+    }
+
     public static void insertUser(String email, String password) throws SQLException {
         initDB();
         String query = ("insert into lib_user (user_email, user_password) values('"+ email +"','"+ password +"');");
@@ -237,7 +280,7 @@ public class DataBase {
         Date dateDB = new Date(numberDate);
         String query = ("insert into lib_book(title, author,publish_day,favourite,sinopsis,book_quantity) values('"+ title +"','"+ author +"','"+dateDB+"',false, '" + sinopsis +"',"+ quantityDB+");");
         smt.executeUpdate(query);
-
         closeBD();
     };
+
 }
