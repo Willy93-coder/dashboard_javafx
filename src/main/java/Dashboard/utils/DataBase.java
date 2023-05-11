@@ -222,7 +222,7 @@ public class DataBase {
         java.util.Date formatDate = format.parse(date);
         long numberDate = formatDate.getTime();
         Date dateDB = new Date(numberDate);
-        String query = ("insert into lib_book values('"+ title +"','"+ author +"','"+dateDB+"',false, '" + sinopsis +"',"+ quantityDB+");");
+        String query = ("insert into lib_book(title, author,publish_day,favourite,sinopsis,book_quantity) values('"+ title +"','"+ author +"','"+dateDB+"',false, '" + sinopsis +"',"+ quantityDB+");");
         smt.executeUpdate(query);
         closeBD();
     };
