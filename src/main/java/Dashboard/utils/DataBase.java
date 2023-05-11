@@ -15,7 +15,7 @@ public class DataBase {
     private int book_quantity;
     private String sinopsis;
 
-    private String email;
+    private String user_email;
 
     private Date rent_day;
 
@@ -43,7 +43,7 @@ public class DataBase {
         this.title = title;
         this.rent_day = rent_day;
         this.return_day = return_day;
-        this.email = email;
+        this.user_email = email;
     }
 
     // Getters
@@ -67,8 +67,8 @@ public class DataBase {
         return sinopsis;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUser_email() {
+        return user_email;
     }
 
     public Date getRent_day() {
@@ -183,6 +183,11 @@ public class DataBase {
 
             //this is a test to insert to table user
             smt.executeUpdate("insert into lib_user values(1,'test@gmail.com','test')");
+            smt.executeUpdate("insert into lib_user values(2,'willy@gmail.com','willy')");
+
+            //Add information to table lib_rent
+            smt.executeUpdate("insert into lib_rent(user_id, book_id, rent_day,return_day,rent_quantity) values(1,1,'2023-06-12','2023-07-20',1)");
+
 
             dbConnection.close();
         } catch (SQLException e) {
@@ -233,21 +238,21 @@ public class DataBase {
         }
     }
 
-    public static void rentBooksTable(TableColumn<DataBase, String> title, TableColumn<DataBase, Date> rentDate, TableColumn<DataBase, Date> returnDate, TableColumn<DataBase, String> email, TableView<DataBase> table) throws SQLException {
-        initDB();
-        String query = "";
-        ResultSet rs = smt.executeQuery(query);
-        ObservableList<DataBase> rentList = FXCollections.observableArrayList();
-        while (rs.next()) {
-            DataBase rentBook = new DataBase(rs.getString("title"), rs.getDate("rent_day"), rs.getDate("return_day"), rs.getString("email"));
-            rentList.add(rentBook);
-        }
-        table.setItems(rentList);
-        table.refresh();
-        title.setCellValueFactory(new PropertyValueFactory<>("title"));
-        rentDate.setCellValueFactory(new PropertyValueFactory<>("rent_day"));
-        returnDate.setCellValueFactory(new PropertyValueFactory<>("return_day"));
-        email.setCellValueFactory(new PropertyValueFactory<>("email"));
-        closeBD();
-    }
+   public static void rentBooksTable(TableColumn<DataBase, String> title, TableColumn<DataBase, Date> rentDate, TableColumn<DataBase, Date> returnDate, TableColumn<DataBase, String> email, TableView<DataBase> table) throws SQLException {
+           initDB();
+           String query = "select b.title, r.rent_day, r.return_day, u.user_email from lib_rent r inner join lib_user u on r.user_id = u.user_id inner join lib_book b on b.book_id = r.book_id;";
+           ResultSet rs = smt.executeQuery(query);
+           ObservableList<DataBase> rentList = FXCollections.observableArrayList();
+           while (rs.next()) {
+               DataBase rentBook = new DataBase(rs.getString("title"), rs.getDate("rent_day"), rs.getDate("return_day"), rs.getString("user_email"));
+               rentList.add(rentBook);
+           }
+           table.setItems(rentList);
+           table.refresh();
+           title.setCellValueFactory(new PropertyValueFactory<>("title"));
+           rentDate.setCellValueFactory(new PropertyValueFactory<>("rent_day"));
+           returnDate.setCellValueFactory(new PropertyValueFactory<>("return_day"));
+           email.setCellValueFactory(new PropertyValueFactory<>("user_email"));
+           closeBD();
+   }
 }
