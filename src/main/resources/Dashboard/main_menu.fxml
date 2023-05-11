@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Dashboard.controllers.MainMenu">
+   <children>
+      <Button fx:id="btnBooks" layoutX="229.0" layoutY="30.0" mnemonicParsing="false" onAction="#showBooks" prefHeight="60.0" prefWidth="129.0" text="LIBROS" />
+      <Button fx:id="btnUser" layoutX="229.0" layoutY="112.0" mnemonicParsing="false" onAction="#insertUser" prefHeight="60.0" prefWidth="129.0" text="AÑADIR USUARIO" />
+      <Button fx:id="btnAddBooks" layoutX="229.0" layoutY="190.0" mnemonicParsing="false" onAction="#insertBook" prefHeight="60.0" prefWidth="129.0" text="INSERTAR LIBROS" />
+      <Button fx:id="btnRent" layoutX="229.0" layoutY="272.0" mnemonicParsing="false" onAction="#rentBooks" prefHeight="60.0" prefWidth="129.0" text="LIBROS ALQUILADOS" />
+   </children>
+</AnchorPane>

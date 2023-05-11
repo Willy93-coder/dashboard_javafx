@@ -1,11 +1,58 @@
 package Dashboard.utils;
-import javafx.application.Application;
 
+import javafx.application.Application;
+import java.sql.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import java.sql.*;
 
-public class DataBase  {
-    static Statement smt;
-    static Connection dbConnection=null;
+public class DataBase {
+    // Atributos
+    private String title;
+    private String author;
+    private Date publish_day;
+    private int book_quantity;
+    private String sinopsis;
+
+    public static Statement smt;
+    public static Connection dbConnection;
+
+    // Constructors
+    public DataBase() {
+    }
+
+    public DataBase(String title, String author, Date publish_day, int book_quantity, String sinopsis) {
+        this.title = title;
+        this.author = author;
+        this.publish_day = publish_day;
+        this.book_quantity = book_quantity;
+        this.sinopsis = sinopsis;
+    }
+
+    // Getters
+    public String getTitle() {
+        return title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public Date getPublish_day() {
+        return publish_day;
+    }
+
+    public int getBook_quantity() {
+        return book_quantity;
+    }
+
+    public String getSinopsis() {
+        return sinopsis;
+    }
+
     public static void createDB () throws SQLException {
         try {
             dbConnection= DriverManager.getConnection("jdbc:mysql://localhost:3306/","library", "Cide2023");
@@ -13,6 +60,7 @@ public class DataBase  {
             smt = dbConnection.createStatement();
 
             //  Eliminate Data Base just in case if we need to.
+            smt.executeUpdate("drop database if exists library");
             //  smt.execute("Drop database library");
 
             //Create database named library
@@ -109,6 +157,8 @@ public class DataBase  {
 
             //this is a test to insert to table user
             smt.executeUpdate("insert into lib_user values(1,'test@gmail.com','test')");
+
+            dbConnection.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -118,13 +168,40 @@ public class DataBase  {
         return data;
     }
 
-    public static void insertData(String query) throws SQLException{
-        smt.executeUpdate(query);
+    public static void initDB() throws SQLException {
+        try {
+            dbConnection= DriverManager.getConnection("jdbc:mysql://localhost:3306/library","library", "Cide2023");
+            smt = dbConnection.createStatement();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public static void closeBD() throws SQLException {
         try {
             dbConnection.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public static void showAllBooks(TableColumn<DataBase, String> title, TableColumn<DataBase, String> author, TableColumn<DataBase, Date> publish_day, TableColumn<DataBase, Integer> book_quantity, TableColumn<DataBase, String> sinopsis, TableView<DataBase> table) throws SQLException{
+        try {
+            initDB();
+            String query = "SELECT title, author, publish_day, book_quantity, sinopsis FROM lib_book;";
+            ResultSet rs = smt.executeQuery("SELECT title, author, publish_day, book_quantity, sinopsis FROM lib_book;");
+            ObservableList<DataBase> bookList = FXCollections.observableArrayList();
+            while (rs.next()) {
+                DataBase book = new DataBase(rs.getString("title"), rs.getString("author"), rs.getDate("publish_day"), rs.getInt("book_quantity"), rs.getString("sinopsis"));
+                bookList.add(book);
+            }
+            table.setItems(bookList);
+            table.refresh();
+            title.setCellValueFactory(new PropertyValueFactory<>("title"));
+            author.setCellValueFactory(new PropertyValueFactory<>("author"));
+            publish_day.setCellValueFactory(new PropertyValueFactory<>("publish_day"));
+            book_quantity.setCellValueFactory(new PropertyValueFactory<>("book_quantity"));
+            sinopsis.setCellValueFactory(new PropertyValueFactory<>("sinopsis"));
+            closeBD();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

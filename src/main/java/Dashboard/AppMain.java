@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import static Dashboard.utils.DataBase.closeBD;
 import static Dashboard.utils.DataBase.createDB;
 
 public class AppMain extends Application {

@@ -20,23 +20,19 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="214.0" layoutY="169.0" text="Contraseña">
+      <Label layoutX="212.0" layoutY="161.0" text="Contraseña">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="passwordInput" layoutX="214.0" layoutY="195.0" prefHeight="30.0" prefWidth="173.0">
+      <PasswordField fx:id="passwordInput" layoutX="214.0" layoutY="188.0" prefHeight="25.0" prefWidth="173.0">
          <font>
             <Font size="14.0" />
          </font>
-      </TextField>
-      <Button fx:id="loginButton" layoutX="214.0" layoutY="276.0" mnemonicParsing="false" onAction="#loginMethod" prefHeight="25.0" prefWidth="173.0" text="Iniciar sesión" textAlignment="CENTER">
+      </PasswordField>
+      <Button fx:id="loginButton" layoutX="214.0" layoutY="245.0" mnemonicParsing="false" onAction="#loginMethod" prefHeight="25.0" prefWidth="173.0" text="Iniciar sesión" textAlignment="CENTER">
          <font>
             <Font size="14.0" />
          </font></Button>
-      <Label fx:id="registerLink" layoutX="214.0" layoutY="231.0" text="¿No tienes cuenta? Registrate" onMouseClicked="#goRegisterPage">
-         <font>
-            <Font size="11.0" />
-         </font></Label>
    </children>
 </Pane>
