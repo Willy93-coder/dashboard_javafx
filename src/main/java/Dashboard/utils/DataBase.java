@@ -207,7 +207,7 @@ public class DataBase {
 
     public static void insertUser(String email, String password) throws SQLException {
         initDB();
-        String query = ("insert into lib_user values('"+ email +"','"+ password +"');");
+        String query = ("insert into lib_user (user_email, user_password) values('"+ email +"','"+ password +"');");
         smt.executeUpdate(query);
         closeBD();
     };

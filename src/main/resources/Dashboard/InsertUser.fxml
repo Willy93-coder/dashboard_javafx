@@ -4,45 +4,28 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="468.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Dashboard.controllers.InsertUserController">
+<AnchorPane prefHeight="468.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Dashboard.controllers.InsertUserController">
    <children>
-      <Label layoutX="205.0" layoutY="81.0" text="Email">
+      <Label layoutX="205.0" layoutY="121.0" text="Email">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="205.0" layoutY="151.0" text="Nombre usuario">
+      <TextField fx:id="txtEmail" layoutX="205.0" layoutY="153.0">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+      <Label layoutX="206.0" layoutY="199.0" text="Contraseña">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="205.0" layoutY="214.0" text="Contraseña">
+      <PasswordField fx:id="txtPassword" layoutX="205.0" layoutY="231.0">
          <font>
             <Font size="14.0" />
          </font>
-      </Label>
-      <Label layoutX="208.0" layoutY="281.0" text="Confirmar contraseña">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <TextField fx:id="txtEmail" layoutX="205.0" layoutY="113.0">
-         <font>
-            <Font size="14.0" />
-         </font></TextField>
-      <TextField fx:id="txtUsername" layoutX="206.0" layoutY="184.0">
-         <font>
-            <Font size="14.0" />
-         </font></TextField>
-      <TextField fx:id="txtPassword" layoutX="206.0" layoutY="243.0">
-         <font>
-            <Font size="14.0" />
-         </font></TextField>
-      <TextField fx:id="txtConfirm" layoutX="205.0" layoutY="312.0">
-         <font>
-            <Font size="14.0" />
-         </font></TextField>
-      <Button fx:id="btnRegister" layoutX="242.0" layoutY="358.0" mnemonicParsing="false" onAction="#register" text="Insertar Usuario">
+      </PasswordField>
+      <Button fx:id="btnRegister" layoutX="234.0" layoutY="303.0" mnemonicParsing="false" onAction="#register" text="Insertar Usuario">
          <font>
             <Font size="14.0" />
          </font></Button>

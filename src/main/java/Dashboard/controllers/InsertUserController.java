@@ -21,11 +21,7 @@ public class InsertUserController implements Initializable {
     @FXML
     private TextField txtEmail;
     @FXML
-    private TextField txtUsername;
-    @FXML
     private TextField txtPassword;
-    @FXML
-    private TextField txtConfirm;
     @FXML
     private Button btnInsert;
     @FXML
