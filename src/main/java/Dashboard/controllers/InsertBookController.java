@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -16,6 +17,8 @@ import java.text.ParseException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static Dashboard.utils.DataBase.insertBook;
 
@@ -47,9 +50,32 @@ public class InsertBookController implements Initializable {
         String sinopsis  = txtSinopsis.getText();
         String date  = txtDate.getText();
         String quantity  = txtQuantity.getText();
-
-        insertBook(title, author, sinopsis, date, quantity);
-
+        Pattern patron = Pattern.compile("\\d+");
+        Matcher matcher = patron.matcher(quantity);
+        
+        if (title.isEmpty() || author.isEmpty() || sinopsis.isEmpty() || date.isEmpty() || quantity.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Los campos no pueden estar vacios");
+            alert.showAndWait();
+        } else if (!date.matches("^(0?[1-9]|[1-2][0-9]|3[0-1])\\/(0?[1-9]|1[0-2])\\/\\d{4}$")) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("La fecha no es correcta.");
+            alert.showAndWait();
+        } else if (!matcher.matches()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Solo se admiten números enteros");
+            alert.showAndWait();
+        } else {
+            insertBook(title, author, sinopsis, date, quantity);
+            txtTitle.setText("");
+            txtAuthor.setText("");
+            txtSinopsis.setText("");
+            txtDate.setText("");
+            txtQuantity.setText("");
+        }
     }
     public void closeWindows() throws IOException {
         try {

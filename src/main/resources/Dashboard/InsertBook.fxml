@@ -2,21 +2,58 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Dashboard.controllers.InsertBookController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Dashboard.controllers.InsertBookController">
    <children>
-      <Label layoutX="230.0" layoutY="10.0" text="INSERTAR LIBRO" />
-      <Label layoutX="269.0" layoutY="43.0" text="Titulo" />
-      <TextField fx:id="txtTitle" layoutX="210.0" layoutY="60.0" />
-      <Label layoutX="270.0" layoutY="94.0" text="Autor" />
-      <TextField fx:id="txtAuthor" layoutX="211.0" layoutY="114.0" />
-      <Label layoutX="265.0" layoutY="147.0" text="Sinopsis" />
-      <TextField fx:id="txtSinopsis" layoutX="210.0" layoutY="175.0" prefHeight="25.0" prefWidth="149.0" />
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="229.0" layoutY="210.0" text="Fecha de publicacion" />
-      <TextField fx:id="txtDate" layoutX="209.0" layoutY="238.0" />
-      <Label layoutX="260.0" layoutY="267.0" text="Cantidad" />
-      <TextField fx:id="txtQuantity" layoutX="212.0" layoutY="289.0" />
-      <Button fx:id="btnInsert" layoutX="245.0" layoutY="339.0" mnemonicParsing="false" onAction="#insertFormBook" text="Insertar libro" />
-      <Button fx:id="btnReturn" layoutX="25.0" layoutY="346.0" mnemonicParsing="false" onAction="#closeWindows" text="Volver" />
+      <Label layoutX="225.0" layoutY="42.0" text="INSERTAR LIBRO">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Label>
+      <Label layoutX="208.0" layoutY="102.0" text="Titulo">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <TextField fx:id="txtTitle" layoutX="264.0" layoutY="97.0">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+      <Label layoutX="208.0" layoutY="156.0" text="Autor">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <TextField fx:id="txtAuthor" layoutX="263.0" layoutY="151.0">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+      <Label layoutX="194.0" layoutY="201.0" text="Sinopsis">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <TextField fx:id="txtSinopsis" layoutX="264.0" layoutY="196.0" prefHeight="30.0" prefWidth="173.0">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="115.0" layoutY="247.0" text="Fecha de publicacion">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <TextField fx:id="txtDate" layoutX="264.0" layoutY="242.0" promptText="dd/mm/yyyy">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+      <Label layoutX="190.0" layoutY="294.0" text="Cantidad">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <TextField fx:id="txtQuantity" layoutX="264.0" layoutY="289.0">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+      <Button fx:id="btnInsert" layoutX="252.0" layoutY="344.0" mnemonicParsing="false" onAction="#insertFormBook" text="Insertar libro">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Button fx:id="btnReturn" layoutX="25.0" layoutY="347.0" mnemonicParsing="false" onAction="#closeWindows" text="Volver" />
    </children>
 </Pane>

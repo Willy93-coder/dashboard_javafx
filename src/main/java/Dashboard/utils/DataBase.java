@@ -265,6 +265,7 @@ public class DataBase {
         initDB();
         String query = ("insert into lib_user (user_email, user_password) values('"+ email +"','"+ password +"');");
         smt.executeUpdate(query);
+        closeBD();
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Successful");
         alert.setHeaderText("Registro completado correctamente");
@@ -281,6 +282,10 @@ public class DataBase {
         String query = ("insert into lib_book(title, author,publish_day,favourite,sinopsis,book_quantity) values('"+ title +"','"+ author +"','"+dateDB+"',false, '" + sinopsis +"',"+ quantityDB+");");
         smt.executeUpdate(query);
         closeBD();
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Successful");
+        alert.setHeaderText("Registro completado correctamente");
+        alert.showAndWait();
     };
 
 }

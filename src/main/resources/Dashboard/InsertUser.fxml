@@ -30,5 +30,10 @@
             <Font size="14.0" />
          </font></Button>
       <Button fx:id="btnReturn" layoutX="29.0" layoutY="418.0" mnemonicParsing="false" onAction="#closeWindows" text="Volver" />
+      <Label layoutX="225.0" layoutY="52.0" text="Dar alta usuario">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

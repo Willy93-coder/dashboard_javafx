@@ -91,6 +91,7 @@ public class LoginController implements Initializable {
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(scene);
+            stage.setTitle("Main menu");
             stage.show();
             stage.setOnCloseRequest(e -> {
                 controller.closeWindows();
