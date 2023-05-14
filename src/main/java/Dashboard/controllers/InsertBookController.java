@@ -106,7 +106,7 @@ public class InsertBookController implements Initializable {
             alert.setTitle("Error");
             alert.setHeaderText("Los campos no pueden estar vacios");
             alert.showAndWait();
-            // Validación comprobar que mete un email correcto
+            // Validación comprobar que la fecha es correcta
         } else if (!date.matches("^(0?[1-9]|[1-2][0-9]|3[0-1])\\/(0?[1-9]|1[0-2])\\/\\d{4}$")) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
