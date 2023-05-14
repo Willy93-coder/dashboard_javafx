@@ -1,3 +1,8 @@
+/**
+ * @author Chen, S. Folgueras y Willy
+ * @version 1.0.0
+ * 12/05/2023
+ */
 package Dashboard.utils;
 
 import java.sql.*;
@@ -11,13 +16,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import static java.lang.Integer.parseInt;
-
-/**
- * @author Chen, S. Folgueras y Willy
- * @version 1.0.0
- * 12/05/2023
- */
-
 /**
  * Clase que contiene toda la lógica relacionada con la base de datos
  */
