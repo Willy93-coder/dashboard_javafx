@@ -23,6 +23,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static Dashboard.utils.DataBase.insertBook;
+import static Dashboard.utils.IO.writeDataBook;
 
 /**
  * Clase que implementa la lógica de insertar libros
@@ -119,6 +120,7 @@ public class InsertBookController implements Initializable {
             alert.setHeaderText("Solo se admiten números enteros");
             alert.showAndWait();
         } else {
+            writeDataBook(title,author,sinopsis,date,quantity);
             insertBook(title, author, sinopsis, date, quantity);
             txtTitle.setText("");
             txtAuthor.setText("");
