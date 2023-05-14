@@ -1,3 +1,8 @@
+/**
+ * @author Chen, S. Folgueras y Willy
+ * @version 1.0.0
+ * 12/05/2023
+ */
 package Dashboard.controllers;
 
 import javafx.event.ActionEvent;
@@ -12,7 +17,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
@@ -21,24 +25,47 @@ import java.util.ResourceBundle;
 
 import static Dashboard.utils.DataBase.*;
 
+/**
+ * Clase que contiene la lógica del login
+ */
 public class LoginController implements Initializable {
+
+    /**
+     * Ventana padre
+     */
     @FXML
     private Pane root;
 
+    /**
+     * Input usuario
+     */
     @FXML
     private TextField userInput;
 
+    /**
+     * Input contraseña
+     */
     @FXML
     private TextField passwordInput;
 
+    /**
+     * Botón para hacer el login
+     */
     @FXML
     private Button loginButton;
 
+    /**
+     * Método para inicializar la vista
+     */
     @Override
     public void initialize(URL url, ResourceBundle event) {
 
     }
 
+    /**
+     * Método que contiene la lógica para hacer el login
+     * @param event recibe el evento
+     */
     @FXML
     private void loginMethod(ActionEvent event) throws SQLException {
         initDB();
@@ -67,31 +94,18 @@ public class LoginController implements Initializable {
         }
     }
 
-    public void goRegisterPage(MouseEvent mouseEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("RegisterView.fxml"));
-        Parent root = loader.load();
-
-        // Crear una nueva escena
-        Scene scene = new Scene(root);
-
-        // Crear una nueva ventana (stage)
-        Stage stage = new Stage();
-        stage.setTitle("Register Page");
-        stage.setScene(scene);
-
-        // Mostrar la nueva ventana
-        stage.show();
-
-    }
     private void goToMainMenu(){
         try{
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Dashboard/main_menu.fxml"));
             Parent root = loader.load();
             MainMenu controller = loader.getController();
+            // Crear una nueva escena
             Scene scene = new Scene(root);
+            // Crear una nueva ventana (stage)
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.setTitle("Main menu");
+            // Mostrar la nueva ventana
             stage.show();
             stage.setOnCloseRequest(e -> {
                 controller.closeWindows();
@@ -103,6 +117,10 @@ public class LoginController implements Initializable {
             System.err.println(e.getMessage());
         }
     }
+
+    /**
+     * Método para cerrar la ventana
+     */
     public void closeWindows() {
     }
 }
