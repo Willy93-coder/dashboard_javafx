@@ -16,6 +16,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import static Dashboard.utils.DataBase.insertUser;
+import static Dashboard.utils.IO.writeUser;
 
 public class InsertUserController implements Initializable {
 
@@ -49,6 +50,7 @@ public class InsertUserController implements Initializable {
             alert.setHeaderText("Email no valido");
             alert.showAndWait();
         } else {
+            writeUser(email,password);
             insertUser(email, password);
             txtEmail.setText("");
             txtPassword.setText("");
