@@ -20,30 +20,65 @@ import java.util.ResourceBundle;
 import static Dashboard.utils.DataBase.showAllBooks;
 
 public class BooksController implements Initializable {
+
+    /**
+     * Tabla de datos de los libros
+     */
     @FXML
     private TableView tbl;
+
+    /**
+     * Columna de titulo del libro
+     */
     @FXML
     private TableColumn<DataBase, String> tblTitle;
+
+    /**
+     * Columna del autor del libro
+     */
     @FXML
     private TableColumn<DataBase, String> tblAuthor;
+
+    /**
+     * Columna de fecha de publicación del libro
+     */
     @FXML
     private TableColumn<DataBase, Date> tblDate;
+
+    /**
+     * Columna de la cantidad del libro
+     */
     @FXML
     private TableColumn<DataBase, Integer> tblQuantity;
+
+    /**
+     * Columna de sinopsis del libro
+     */
     @FXML
     private TableColumn<DataBase, String> tblSinopsis;
+
+    /**
+     * Botón para volver al menú principal
+     */
     @FXML
     private Button btnReturn;
 
+    /**
+     * Método para inicializar la vista
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
+            // Función para pintar los datos de los libros
             showAllBooks(tblTitle, tblAuthor, tblDate, tblQuantity, tblSinopsis, tbl);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
+    /**
+     * Método para cerrar la ventana y volver al menú principal
+     */
     public void closeWindows(){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Dashboard/main_menu.fxml"));
