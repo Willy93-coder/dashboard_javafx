@@ -1,3 +1,8 @@
+/**
+ * @author Chen, S. Folgueras y Willy
+ * @version 1.0.0
+ * 12/05/2023
+ */
 package Dashboard.controllers;
 
 import Dashboard.utils.DataBase;
