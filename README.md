@@ -1,4 +1,4 @@
-# Library gestión
+# Library management
 
 ## Tech
 - JavaFX
